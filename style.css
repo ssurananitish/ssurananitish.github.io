@@ -1,0 +1,511 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.floating-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    font-size: 30px;
+    animation: floatHearts 8s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+.heart-1 { top: 10%; left: 15%; animation-delay: 0s; }
+.heart-2 { top: 15%; right: 20%; animation-delay: 2s; }
+.heart-3 { top: 85%; left: 25%; animation-delay: 4s; }
+
+@keyframes floatHearts {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg) scale(1); 
+        opacity: 0.3;
+    }
+    25% { 
+        transform: translateY(-30px) rotate(90deg) scale(1.1); 
+        opacity: 0.6;
+    }
+    50% { 
+        transform: translateY(-60px) rotate(180deg) scale(0.9); 
+        opacity: 0.4;
+    }
+    75% { 
+        transform: translateY(-30px) rotate(270deg) scale(1.2); 
+        opacity: 0.7;
+    }
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 70px 90px;
+    border-radius: 50px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(102, 126, 234, 0.3);
+    max-width: 850px;
+    width: 85%;
+    min-height: 500px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+} 
+
+.date-display {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+h1 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 3.2em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 30px;
+        max-width: 95%;
+        border-radius: 30px;
+    }
+    
+    h1 {
+        font-size: 2.2em;
+    }
+    
+    .subtitle {
+        font-size: 1em;
+    }
+    
+    .yes-btn {
+        padding: 20px 60px;
+        font-size: 1.4em;
+        left: 30px;
+    }
+    
+    .no-btn {
+        padding: 12px 28px;
+        font-size: 0.95em;
+        right: 30px;
+        width: 100px;
+        height: 50px;
+    }
+    
+    .celebration-header h2 {
+        font-size: 2em;
+    }
+    
+    .celebration-message {
+        font-size: 1.1em;
+    }
+    
+    .gif-container img {
+        max-width: 300px;
+    }
+    
+    .love-message p {
+        font-size: 1em;
+    }
+    
+    .heart {
+        font-size: 20px;
+    }
+}
+
+#buttons-container {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.btn {
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    padding: 25px 80px;
+    font-size: 1.8em;
+}
+
+.yes-btn:hover {
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Celebration mode: focus the page on the reaction */
+body.celebration .floating-hearts,
+body.celebration .date-display,
+body.celebration h1,
+body.celebration #buttons-container {
+    display: none !important;
+}
+
+body.celebration .container {
+    /* Match the default container so Yes and No screens look identical; increase height for larger GIFs */
+    padding: 70px 90px;
+    min-height: 560px;
+    max-width: 880px;
+    width: 86%;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+body.celebration #reaction {
+    margin-top: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    body.celebration .container { padding: 24px; width: 95%; }
+}
+
+.music-control {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.music-btn {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    color: #333;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 154, 158, 0.3);
+}
+
+.music-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 154, 158, 0.4);
+}
+
+.music-btn.playing {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    color: white;
+}
+
+.no-btn {
+    background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 100%);
+    color: #999;
+    position: absolute;
+    right: 90px;
+    top: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 15px 35px;
+    font-size: 1.1em;
+    width: 110px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    transition: left 220ms cubic-bezier(.2,.9,.3,1), top 220ms cubic-bezier(.2,.9,.3,1), transform 120ms ease;
+    will-change: left, top, transform;
+}
+
+#reaction {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.celebration-header h2 {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    animation: bounceIn 1s ease-out;
+    letter-spacing: -0.5px;
+}
+
+.celebration-message {
+    color: #ff6b9d;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 30px;
+    animation: fadeInUp 1.2s ease-out 0.3s both;
+    font-style: italic;
+}
+
+.gif-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.gif-container img,
+#angry-reaction .pout-gif {
+    max-width: 520px; /* allow larger GIF area for both screens */
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(255, 107, 157, 0.3);
+    animation: zoomIn 1s ease-out 0.5s both;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+@keyframes bounceIn {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.3) translateY(50px); 
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.05) translateY(-10px); 
+    }
+    70% { 
+        transform: scale(0.9) translateY(5px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+    }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes zoomIn {
+    from { 
+        opacity: 0; 
+        transform: scale(0.8); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+}
+
+.love-message, #angry-reaction .pout-msg {
+    margin-top: 30px;
+    animation: fadeInUp 1.5s ease-out 0.8s both;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.love-message p,
+#angry-reaction .pout-msg {
+    color: #666;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.love-message p:first-child {
+    color: #ff6b9d;
+    font-style: italic;
+    font-size: 1.2em;
+}
+
+.love-message p:last-child {
+    color: #c44569;
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+#angry-reaction {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#angry-reaction.pout h2 {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 12px;
+    animation: bounceIn 0.8s ease-out;
+    letter-spacing: -0.4px;
+}
+
+#angry-reaction .pout-body {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+#angry-reaction .pout-gif {
+    max-width: 160px;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(255, 154, 158, 0.18);
+    animation: float 2.8s ease-in-out infinite;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    display: block;
+}
+
+#angry-reaction .pout-msg {
+    max-width: 420px;
+    color: #666;
+    font-size: 1.05em;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 500;
+}
+
+#angry-reaction.pout .pout-msg {
+    color: #ff6b9d;
+}
+
+/* Small transient bubble that appears near the No button when clicked */
+.pout-bubble {
+    position: fixed;
+    background: linear-gradient(135deg,#fff7fb,#ffeef4);
+    color: #c44a6a;
+    padding: 8px 12px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(249, 190, 213, 0.25);
+    font-weight: 600;
+    z-index: 9999;
+    transform: translate(-50%, -10px) scale(0.96);
+    animation: bubblePop 900ms cubic-bezier(.2,.9,.3,1) forwards;
+}
+
+@keyframes bubblePop {
+    0% { opacity: 0; transform: translate(-50%, -6px) scale(0.92) }
+    40% { opacity: 1; transform: translate(-50%, -18px) scale(1.02) }
+    100% { opacity: 0; transform: translate(-50%, -30px) scale(0.96) }
+}
+
+#back-btn {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    margin-top: 10px;
+}
+
+/* Pout layout: make the GIF dominate the white box and center the message */
+#angry-reaction.pout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    padding: 6px 20px 20px 20px;
+}
+
+#angry-reaction.pout .gif-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#angry-reaction.pout .pout-gif {
+    max-width: 640px;
+    max-height: 440px;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+}
+
+#angry-reaction.pout .pout-msg {
+    font-size: 1.04em;
+    color: #ff6b9d;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+@media (max-width: 768px) {
+    #angry-reaction.pout .pout-gif {
+        max-width: 360px;
+        max-height: 300px;
+    }
+
+    #angry-reaction.pout .pout-msg {
+        font-size: 1em;
+    }
+}

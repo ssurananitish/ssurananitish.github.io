@@ -1,6 +1,57 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? 💕</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-<p> Hello world! </p>
-<a href = "Final_Build/index.html">Play Space Invaders (Open in FireFox)</a>
+    <div class="container">
+        <div class="floating-hearts">
+            <div class="heart heart-1">💕</div>
+            <div class="heart heart-2">💖</div>
+            <div class="heart heart-3">💗</div>
+        </div>
+        
+        <div class="date-display">💕 February 14, 2026 💕</div>
+        
+        <h1>Disha, will you be my Valentine? 💕✨</h1>
+        
+        <div id="buttons-container">
+            <button id="yes-btn" class="btn yes-btn">Yes! ❤️</button>
+            <button id="no-btn" class="btn no-btn">No</button>
+        </div>
+
+        <div id="reaction" class="hidden">
+            <div class="celebration-header">
+                <h2>Yay! I'm the luckiest person in the world! 💓</h2>
+                <!-- <p class="celebration-message"></p> -->
+            </div>
+            <div class="gif-container">
+                <img src="napoleon-dynamite-yes.gif" alt="Celebration">
+            </div>
+            <div class="love-message">
+                <p>Dishu, you make my heart skip a beat every single day! Every moment with you is a treasure I hold dear.</p>
+                <p>Happy Valentine's Day, my love! Forever yours ❤️</p>
+            </div>
+            <div class="music-control">
+                <button id="music-btn" class="music-btn">🎵 Your Favorite song</button>
+            </div>
+        </div>
+
+        <div id="angry-reaction" class="hidden pout">
+            <h2>My heart feels so empty without you 💔</h2>
+            <div class="gif-container">
+                <img src="sad.gif" alt="Pout" class="pout-gif">
+            </div>
+            <div class="love-message pout-msg">
+                <p>You made my tiny heart do a sad backflip 😭. Please say you'll stay with me?</p>
+            </div>
+            <button id="back-btn" class="btn yes-btn">Okay... take me back</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
